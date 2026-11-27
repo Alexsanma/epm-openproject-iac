@@ -10,7 +10,7 @@ instance_type       = "c7i-flex.large"
 root_volume_size    = 30
 openproject_version = "16"
 
-db_engine_version    = "16"
+db_engine_version    = "17"
 db_instance_class    = "db.t4g.micro"
 db_allocated_storage = 20
 

@@ -56,9 +56,9 @@ variable "openproject_version" {
 
 # ---------- Base de datos relacional (RDS) ----------
 variable "db_engine_version" {
-  description = "PostgreSQL major version for RDS"
+  description = "PostgreSQL major version for RDS (OpenProject 16 ships a pg_dump 17 structure.sql)"
   type        = string
-  default     = "16"
+  default     = "17"
 }
 
 variable "db_instance_class" {
