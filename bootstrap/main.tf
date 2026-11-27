@@ -77,9 +77,14 @@ resource "aws_iam_role" "github_actions" {
           StringEquals = {
             "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com"
           }
-          # Solo este repositorio puede asumir el rol
+          # Solo este repositorio puede asumir el rol. GitHub usa ahora un
+          # "sub" inmutable con los IDs del propietario y del repositorio
+          # (repo:Owner@ID/Repo@ID:...); se acepta tambien el formato clasico.
           StringLike = {
-            "token.actions.githubusercontent.com:sub" = "repo:${var.github_owner}/${var.github_repo}:*"
+            "token.actions.githubusercontent.com:sub" = [
+              "repo:${var.github_owner}/${var.github_repo}:*",
+              "repo:${var.github_owner}@*/${var.github_repo}@*:*"
+            ]
           }
         }
       }
