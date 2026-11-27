@@ -24,7 +24,9 @@ resource "aws_db_instance" "main" {
   identifier     = "${var.project_name}-db"
   engine         = "postgres"
   engine_version = var.engine_version
-  instance_class = var.instance_class
+  # Permite subir de version mayor desde el pipeline (p. ej. 16 -> 17)
+  allow_major_version_upgrade = true
+  instance_class              = var.instance_class
 
   allocated_storage = var.allocated_storage
   storage_type      = "gp3"
